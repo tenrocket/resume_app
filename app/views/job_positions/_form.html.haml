@@ -1,0 +1,16 @@
+= f.label "Title"
+= f.text_field :title 
+
+= f.label "Employer"
+= f.text_field :employer_name
+
+= f.label "Descr."
+= f.text_area :description
+
+= f.label "Sold"
+= f.radio_button :sold, true
+
+= f.label "Unsold"
+= f.radio_button :sold, false
+
+= f.submit "Add"

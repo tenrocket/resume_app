@@ -1,0 +1,20 @@
+= form_tag filter_job_positions_path, method: :get do
+	Current job?
+	= select_tag "filter[current_job]", options_for_select(["Yes", "No"]), include_blank: true
+	%br
+	= text_field_tag "filter[title]"
+	= submit_tag "Filter"
+%br
+%br
+= button_to "Add a new position", new_job_position_path, method: :get
+
+%h1 These are my job positions
+
+%ul
+	- @job_positions.each do |jp|
+		%li= "Title: #{jp.title}"
+		%li= "Descr: #{jp.description}"
+		%li= link_to "Edit", edit_job_position_path(jp)
+		%li= link_to "Delete", job_position_path(jp), method: :delete
+
+		%br
