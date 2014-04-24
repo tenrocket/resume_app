@@ -21,6 +21,16 @@ class SkillsController < ApplicationController
 		@skill = Skill.find(params[:id])
 	end
 
+
+	def destroy
+		@skill =Skill.find(params[:id])
+		if @skill.destroy
+			redirect_to skills_path
+		else
+			redirect_to skills_path(@skill)
+		end
+	end
+
 	def edit
 		@skill = Skill.find(params[:id])
 	end

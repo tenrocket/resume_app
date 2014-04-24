@@ -21,10 +21,6 @@ class JobPositionsController < ApplicationController
 		end
 	end
 
-	def show
-		@job_position = JobPosition.find(params[:id])
-	end
-
 	def edit
 		@position = JobPosition.find(params[:id])
 	end
@@ -34,6 +30,10 @@ class JobPositionsController < ApplicationController
 		if @position.update_attributes(job_position_params)
 			redirect_to job_position_path(@position)
 		end
+	end
+
+	def show
+		@job_position = JobPosition.find(params[:id])
 	end
 
 	def destroy
