@@ -1,14 +1,11 @@
 class SkillsController < ApplicationController
 
 	def index
+		@skills = Skill.all
 	end
 
 	def new
 		@new_skill = Skill.new
-	end
-
-	def show
-		@skill = Skill.find(params[:id])
 	end
 
 	def create
@@ -18,6 +15,10 @@ class SkillsController < ApplicationController
 		else
 			redirect_to new_skill_path
 		end
+	end
+
+	def show
+		@skill = Skill.find(params[:id])
 	end
 
 	def edit

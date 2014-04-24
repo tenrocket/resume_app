@@ -1,3 +1,11 @@
-- @skills.each do |s|
-	= link_to s.name, skill_path(s)
-	%br
+= button_to "Add a new skill", new_skill_path, method: :get
+
+%h1 These are my skills
+
+%ul
+	- @skills.each do |s|
+		%li= "Skill: #{s.name}"
+		%li= "Description: #{s.description}"
+		%li= link_to "Delete", skills_path(s), method: :delete
+
+		%br

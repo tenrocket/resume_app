@@ -5,5 +5,7 @@ Resume::Application.routes.draw do
       get :filter
     end
   end
+
+  resources :skills
   
 end

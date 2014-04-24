@@ -31,7 +31,7 @@ class JobPositionsController < ApplicationController
 
 	def update
 		@position = JobPosition.find(params[:id])
-		if @position.update_attributes(params[:job_position])
+		if @position.update_attributes(job_position_params)
 			redirect_to job_position_path(@position)
 		end
 	end
@@ -44,5 +44,13 @@ class JobPositionsController < ApplicationController
 			redirect_to job_position_path(@position)
 		end
 	end
+
+	private
+
+	def job_position_params
+		params.require(:job_position).permit!
+	end
+
+
 
 end
