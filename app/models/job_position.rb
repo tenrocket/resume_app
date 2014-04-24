@@ -3,7 +3,7 @@ class JobPosition < ActiveRecord::Base
 	def self.search(params)
 		title = params[:title]
 
-		search = self.all
+		search = JobPosition.all
 
 		if params[:current_job] == "Yes"
 			search = search.current_job
@@ -12,7 +12,7 @@ class JobPosition < ActiveRecord::Base
 		end
 
 		if title.present?
-			search = search.by_title(title)
+			search = search.where('title LIKE ?', "%#{title}%")
 		end
 
 		search

@@ -9,6 +9,11 @@ class JobPositionsController < ApplicationController
 		render :index
 	end
 
+	def search
+		@position = JobPosition.search(params[:search])
+		render job_positions_path
+	end
+
 	def new
 		@new_position = JobPosition.new
 	end
